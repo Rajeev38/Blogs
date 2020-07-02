@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block main%}
+  <section id="allposts">
+            <section id="columns">
+                <center><h1>Your Blogs</h1></center>
+                {% for i in allblogs %}
+                   <div class="div4">
+                       <p>Name: {{i.name}}</p>
+                       <p>Content: {{i.content}}</p>
+                       <p>Author: {{i.author}}</p>
+                       <p>Created: {{i.created_at}}</p>
+                   </div>
+                    {% endfor %}
+            </section>
+  </section>
+{% endblock %}
+
+{% block register%}
+<form action="{% url 'logout'%}" method="post">
+    {% csrf_token %}
+    <div>
+        <input type="submit" value="logout">
+    </div>
+</form>
+{%  endblock %}

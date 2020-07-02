@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock%}
+
+{% block main %}
+    <main class="div3">
+        <section>
+            <form action="{% url 'createblog'%}" method="post" id="createblog">
+                {% csrf_token %}
+                <label for="name">Name</label>
+                <input type="text" name="name">
+                <label for="content">Content</label>
+                <textarea name="content"></textarea>
+                <input type="submit" value="Post">
+            </form>
+        </section>
+
+        <section id="allposts">
+            <section id="columns">
+                <center><h1>Your Feed</h1></center>
+                {% for i in allblogs %}
+                   <div class="div4">
+                       <p>Name: {{i.name}}</p>
+                       <p>Content: {{i.content}}</p>
+                       <p>Author: {{i.author}}</p>
+                       <p>Created: {{i.created_at}}</p>
+
+                   </div>
+                    {% endfor %}
+            </section>
+        </section>
+    </main>
+{% endblock %}
+
+{% block register%}
+<div class="div1"><a href="{% url 'myblogs' %}">MyPosts</a></div>
+<form action="{% url 'logout'%}" method="post">
+    {% csrf_token %}
+    <div>
+        <input type="submit" value="logout">
+    </div>
+</form>
+{%  endblock %}

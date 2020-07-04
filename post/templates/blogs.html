@@ -20,13 +20,14 @@
                 <center><h1>Your Feed</h1></center>
                 {% for i in allblogs %}
                    <div class="div4">
-                       <p>Name: {{i.name}}</p>
+                       <p>id:{{i.id}}</p>
+                       <h1>Name: {{i.name}}</h1>
                        <p>Content: {{i.content}}</p>
                        <p>Author: {{i.author}}</p>
                        <p>Created: {{i.created_at}}</p>
-
+                       <a href="{% url 'addcomment' i.id %}">View</a>
                    </div>
-                    {% endfor %}
+                {% endfor %}
             </section>
         </section>
     </main>
@@ -34,10 +35,5 @@
 
 {% block register%}
 <div class="div1"><a href="{% url 'myblogs' %}">MyPosts</a></div>
-<form action="{% url 'logout'%}" method="post">
-    {% csrf_token %}
-    <div>
-        <input type="submit" value="logout">
-    </div>
-</form>
+<div class="div1"><a href="{% url 'logout'%}">Logout</a></div>
 {%  endblock %}

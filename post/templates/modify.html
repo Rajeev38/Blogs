@@ -1,0 +1,19 @@
+{% extends 'myblogs.html' %}
+
+{% block main %}
+
+<main class="div3">
+    <section>
+        <form action="{% url 'modified' %}" method="post" id="createblog">
+            {% csrf_token %}
+            <input type="hidden" value="{{id}}" name="id">
+            <label for="name">Name</label>
+            <input type="text" name="name">
+            <label for="content">Content</label>
+            <textarea name="content"></textarea>
+            <input type="submit" value="Done">
+            </form>
+        </section>
+</main>
+
+{% endblock %}

@@ -10,6 +10,8 @@
                        <p>Content: {{i.content}}</p>
                        <p>Author: {{i.author}}</p>
                        <p>Created: {{i.created_at}}</p>
+                       <a href="{% url 'addcomment' i.id %}">View</a>
+                       <p><a href="{% url 'modify_view' i.id %}" name="like">Modify</a></p>
                    </div>
                     {% endfor %}
             </section>
@@ -17,6 +19,7 @@
 {% endblock %}
 
 {% block register%}
+<div class="div1"><a href="{% url 'myblogs' %}">MyPosts</a></div>
 <form action="{% url 'logout'%}" method="post">
     {% csrf_token %}
     <div>

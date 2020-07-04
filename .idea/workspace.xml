@@ -2,11 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="70ef9085-3b80-429e-aeca-8f41b5ce08b9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blogs/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Blogs/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blogs/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Blogs/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/apps.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/post/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/myforms.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/static/media/solid-color-background-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/static/post/main.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/static/post/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/templates/base.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/templates/blogs.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/templates/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/templates/myblogs.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/templates/signup.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/views.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +50,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/user/static/media" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../bankInfo" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -68,14 +83,14 @@
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.js" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="466" y="155" width="424" height="491" key="FileChooserDialogImpl" timestamp="1593686190019">
+    <state x="466" y="155" width="424" height="491" key="FileChooserDialogImpl" timestamp="1593760179822">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state x="466" y="155" width="424" height="491" key="FileChooserDialogImpl/0.27.1366.741@0.27.1366.741" timestamp="1593686190019" />
-    <state x="339" y="225" key="com.intellij.ide.util.TipDialog" timestamp="1593750144728">
+    <state x="466" y="155" width="424" height="491" key="FileChooserDialogImpl/0.27.1366.741@0.27.1366.741" timestamp="1593760179822" />
+    <state x="339" y="225" key="com.intellij.ide.util.TipDialog" timestamp="1593785842309">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state x="339" y="225" key="com.intellij.ide.util.TipDialog/0.27.1366.741@0.27.1366.741" timestamp="1593750144728" />
+    <state x="339" y="225" key="com.intellij.ide.util.TipDialog/0.27.1366.741@0.27.1366.741" timestamp="1593785842309" />
     <state x="326" y="27" width="1008" height="697" key="dock-window-1" timestamp="1593529821189">
       <screen x="0" y="27" width="1366" height="741" />
     </state>

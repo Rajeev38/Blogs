@@ -31,6 +31,15 @@ nav {
   align-content : center;
 }
 
+#createcomment {
+  display: flex;
+  width: 250px;
+  justify-content: space-between;
+  flex-direction : column;
+  height: 200px;
+  align-content : center;
+}
+
 textarea {
    resize: none;
    height: 100px;

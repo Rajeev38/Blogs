@@ -1,0 +1,66 @@
+{% extends 'myblogs.html' %}
+
+{% block title %} Quick view {% endblock %}
+
+{% block main %}
+
+<main class="div3">
+    <section>
+        <center><h1>Your Top 5 Commented Blogs</h1></center>
+        {% if not comments %}
+           <p>Nothing To Show</p>
+        {% endif %}
+        {% for i in comments %}
+        <h3>Name: {{i.name}}</h3>
+        <p>Content: {{i.content}}</p>
+        <p>Author: {{i.author}}</p>
+        <p>Created: {{i.created_at}}</p>
+        {% endfor %}
+
+        <center><h1>Your Top 5 Liked Blogs in Last 3 days</h1></center>
+        {% if not liked %}
+           <p>Nothing To Show</p>
+        {% endif %}
+        {% for i in liked %}
+        <h3>Name: {{i.name}}</h3>
+        <p>Content: {{i.content}}</p>
+        <p>Author: {{i.author}}</p>
+        <p>Created: {{i.created_at}}</p>
+        {% endfor %}
+
+        <center><h1>Your Top 5 Disliked Blogs in Last 3 days</h1></center>
+        {% if not disliked %}
+           <p>Nothing To Show</p>
+        {% endif %}
+        {% for i in disliked %}
+        <h3>Name: {{i.name}}</h3>
+        <p>Content: {{i.content}}</p>
+        <p>Author: {{i.author}}</p>
+        <p>Created: {{i.created_at}}</p>
+        {% endfor %}
+
+        <center><h1>Your Unmodified Blogs</h1></center>
+        {% if not modified %}
+           <p>Nothing To Show</p>
+        {% endif %}
+        {% for i in modified %}
+        <h3>Name: {{i.name}}</h3>
+        <p>Content: {{i.content}}</p>
+        <p>Author: {{i.author}}</p>
+        <p>Created: {{i.created_at}}</p>
+        {% endfor %}
+
+        <center><h1>All Blogs You Have Commented</h1></center>
+        {% if not commented %}
+           <p>Nothing To Show</p>
+        {% endif %}
+        {% for i in commented %}
+        <h3>Name: {{i.name}}</h3>
+        <p>Content: {{i.content}}</p>
+        <p>Author: {{i.author}}</p>
+        <p>Created: {{i.created_at}}</p>
+        {% endfor %}
+    </section>
+</main>
+
+{% endblock %}

@@ -13,7 +13,9 @@ urlpatterns = [
     path('dislike/<int:id>',views.dislike_view,name='dislike'),
     path('modify/<int:id>',views.modify_view,name='modify_view'),
     path('modified/',views.modified,name='modified'),
-    #path('quickview/',views.quick_view,name='quick_view'),
+    path('quick_view/',views.quick_view,name='quick_view'),
+    path('historybyblog/<int:id>',views.historybyblog_view,name='historybyblog_view'),
+    path('historybyauth/<str:data>',views.historybyauth_view,name='historybyauth_view'),
     path('logout/',views.logout_view,name='logout')
 
 ]

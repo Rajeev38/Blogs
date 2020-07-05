@@ -1,5 +1,7 @@
 {% extends 'myblogs.html' %}
 
+{% block title %} Modify {% endblock %}
+
 {% block main %}
 
 <main class="div3">
@@ -8,9 +10,9 @@
             {% csrf_token %}
             <input type="hidden" value="{{id}}" name="id">
             <label for="name">Name</label>
-            <input type="text" name="name">
+            <input type="text" name="name" required>
             <label for="content">Content</label>
-            <textarea name="content"></textarea>
+            <textarea name="content" required></textarea>
             <input type="submit" value="Done">
             </form>
         </section>

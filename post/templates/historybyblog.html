@@ -1,0 +1,28 @@
+{% extends 'myblogs.html' %}
+
+{% block title %} Blogs comment history {% endblock%}
+
+{% block main%}
+
+<main class="div3">
+        <section id="columns">
+            <center><h1>Your Comment history For Blog</h1></center>
+            {% if not blog %}
+                <center>Nothing To Show</center>
+            {% endif %}
+            <h3>Name: {{blog.name}}</h3>
+            <p>Content: {{blog.content}}</p>
+            <p>Author: {{blog.author}}</p>
+            <p>Created: {{blog.created_at}}</p>
+
+            <center><h1>Comments</h1></center>
+            {% if not comments %}
+                <center>Nothing To Show</center>
+            {% endif %}
+            {% for i in comments %}
+            <h1>Text: {{i.comment_text}}</h1>
+            <p>created_date: {{i.created_date}}</p>
+            {% endfor %}
+        </section>
+    </main>
+{% endblock %}

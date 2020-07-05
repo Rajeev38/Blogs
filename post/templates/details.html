@@ -1,12 +1,10 @@
 {% extends 'base.html' %}
 
-{% block title %} Home {% endblock%}
+{% block title %} Details {% endblock%}
 
 {% block main %}
     <main class="div3">
-        <section id="allposts">
-            <section id="columns">
-                <div class="div4">
+        <section>
                     <h1>Name: {{blog.name}}</h1>
                     <p>Content: {{blog.content}}</p>
                     <p>Author: {{blog.author}}</p>
@@ -15,28 +13,27 @@
                     <h4>Comment: {{count}}</h4>
                     <h4><a href="{% url 'like' blog.id %}" name="like">Like:</a> {{response1}}</h4>
                     <h4><a href="{% url 'dislike' blog.id %}" name="dislike">Dislike:</a> {{response2}}</h4>
-                </div>
                 <center><h1>Comments</h1></center>
                 {% for i in comments %}
                    <div class="div4">
-                       <h1>Name: {{i.user.username}}</h1>
-                       <p>Name: {{i.comment_text}}</p>
+                       <h3>Name: {{i.user.username}}</h3>
+                       <p>Text: {{i.comment_text}}</p>
                    </div>
                 {% endfor %}
                 <div class="div4">
                    <form action="{% url 'addcomment' blog.id %}" method="post" id="createcomment">
                       {% csrf_token %}
-                      <label for="content">Add Comment below</label>
-                      <textarea name="content"></textarea>
+                      <label for="content">Add Comment below :</label>
+                      <textarea name="content" required></textarea>
                       <input type="submit" value="Add">
                    </form>
                 </div>
-            </section>
         </section>
     </main>
 {% endblock %}
 
 {% block register%}
 <div class="div1"><a href="{% url 'myblogs' %}">MyPosts</a></div>
+<div class="div1"><a href="{% url 'quick_view' %}">Quick View</a></div>
 <div class="div1"><a href="{% url 'logout'%}">Logout</a></div>
 {%  endblock %}

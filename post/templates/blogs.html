@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %} Home {% endblock%}
+{% block title %} Blogs {% endblock%}
 
 {% block main %}
     <main class="div3">
@@ -8,32 +8,37 @@
             <form action="{% url 'createblog'%}" method="post" id="createblog">
                 {% csrf_token %}
                 <label for="name">Name</label>
-                <input type="text" name="name">
+                <input type="text" name="name" required>
                 <label for="content">Content</label>
-                <textarea name="content"></textarea>
+                <textarea name="content" required></textarea>
                 <input type="submit" value="Post">
             </form>
         </section>
 
-        <section id="allposts">
-            <section id="columns">
-                <center><h1>Your Feed</h1></center>
-                {% for i in allblogs %}
-                   <div class="div4">
-                       <p>id:{{i.id}}</p>
-                       <h1>Name: {{i.name}}</h1>
-                       <p>Content: {{i.content}}</p>
-                       <p>Author: {{i.author}}</p>
-                       <p>Created: {{i.created_at}}</p>
-                       <a href="{% url 'addcomment' i.id %}">View</a>
-                   </div>
-                {% endfor %}
-            </section>
+        <section id="columns">
+
+            <center><h1>Your Feed</h1></center>
+            {% if not allblogs %}
+                <center>Nothing To Show Consider Posting one</center>
+            {% endif %}
+            {% for i in allblogs %}
+            <p>id: {{i.id}}</p>
+            <h1>Name: {{i.name}}</h1>
+            <p>Content: {{i.content}}</p>
+            <p>Author: {{i.author}}</p>
+            <p>Created: {{i.created_at}}</p>
+            <a href="{% url 'addcomment' i.id %}">View</a>
+            <p>My Comment History:
+                <a href="{% url 'historybyblog_view' i.id %}">For Blog</a>
+                <a href="{% url 'historybyauth_view' request.session.username %}">For Author</a>
+            </p>
+            {% endfor %}
         </section>
     </main>
 {% endblock %}
 
 {% block register%}
 <div class="div1"><a href="{% url 'myblogs' %}">MyPosts</a></div>
+<div class="div1"><a href="{% url 'quick_view' %}">Quick View</a></div>
 <div class="div1"><a href="{% url 'logout'%}">Logout</a></div>
 {%  endblock %}

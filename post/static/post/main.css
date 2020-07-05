@@ -17,7 +17,7 @@ nav {
  display: flex;
  flex-wrap: wrap;
  flex-direction: column;
- justify-content : left;
+ justify-content : center;
  align-items: center;
  margin: 5px;
 }
@@ -51,12 +51,6 @@ textarea {
   flex-direction : row;
 }
 
-#columns {
-  display: flex;
-  flex-direction : column;
-  width: 400px;
-  margin-top: 50px;
-}
 
 .div4 {
   display: flex;
@@ -71,4 +65,8 @@ textarea {
   display : none;
   border: 0;
 
+}
+
+center {
+   color: Yellow;
 }

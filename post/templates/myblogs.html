@@ -1,29 +1,31 @@
 {% extends 'base.html' %}
 
+{% block title %} Myblog {% endblock %}
+
 {% block main%}
-  <section id="allposts">
-            <section id="columns">
+  <main id="allposts">
+            <section>
                 <center><h1>Your Blogs</h1></center>
+                {% if not allblogs %}
+                   <center>Nothing To Show Consider Posting one</center>
+                {% endif %}
                 {% for i in allblogs %}
-                   <div class="div4">
-                       <p>Name: {{i.name}}</p>
-                       <p>Content: {{i.content}}</p>
-                       <p>Author: {{i.author}}</p>
-                       <p>Created: {{i.created_at}}</p>
-                       <a href="{% url 'addcomment' i.id %}">View</a>
-                       <p><a href="{% url 'modify_view' i.id %}" name="like">Modify</a></p>
-                   </div>
-                    {% endfor %}
+                <p>Name: {{i.name}}</p>
+                <p>Content: {{i.content}}</p>
+                <p>Author: {{i.author}}</p>
+                <p>Created: {{i.created_at}}</p>
+                <a href="{% url 'addcomment' i.id %}">View</a>
+                <a href="{% url 'modify_view' i.id %}" name="like">Modify</a>
+                <p>My Comment History:
+                <a href="{% url 'historybyblog_view' i.id %}">For Blog</a>
+            </p>
+                {% endfor %}
             </section>
-  </section>
+  </main>
 {% endblock %}
 
 {% block register%}
 <div class="div1"><a href="{% url 'myblogs' %}">MyPosts</a></div>
-<form action="{% url 'logout'%}" method="post">
-    {% csrf_token %}
-    <div>
-        <input type="submit" value="logout">
-    </div>
-</form>
+<div class="div1"><a href="{% url 'quick_view' %}">Quick View</a></div>
+<div class="div1"><a href="{% url 'logout'%}">Logout</a></div>
 {%  endblock %}

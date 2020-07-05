@@ -22,7 +22,6 @@
                 <center>Nothing To Show Consider Posting one</center>
             {% endif %}
             {% for i in allblogs %}
-            <p>id: {{i.id}}</p>
             <h1>Name: {{i.name}}</h1>
             <p>Content: {{i.content}}</p>
             <p>Author: {{i.author}}</p>
@@ -30,7 +29,7 @@
             <a href="{% url 'addcomment' i.id %}">View</a>
             <p>My Comment History:
                 <a href="{% url 'historybyblog_view' i.id %}">For Blog</a>
-                <a href="{% url 'historybyauth_view' request.session.username %}">For Author</a>
+                <a href="{% url 'historybyauth_view' i.author %}">For Author</a>
             </p>
             {% endfor %}
         </section>

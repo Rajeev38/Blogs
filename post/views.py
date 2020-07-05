@@ -138,9 +138,9 @@ def quick_view(request):
     date2 = date1 - datetime.timedelta(days=3)
     comments = Blog.objects.filter(comment__user__username=request.session['username']
                                    ).order_by('-created_at')[:5]
-    liked = Blog.objects.filter(author__username=request.session['username'],
+    liked = Blog.objects.filter(response__user__username=request.session['username'],
                                 created_at__gt=date2, response__like_or_not=True).order_by('-created_at')[:5]
-    disliked = Blog.objects.filter(author__username=request.session['username'],
+    disliked = Blog.objects.filter(response__user__username=request.session['username'],
                                    created_at__gt=date2, response__like_or_not=False).order_by('-created_at')[:5]
     unmodified = Blog.objects.filter(author__username=request.session['username'],
                                      created_at__date=F('modified_at__date'))
@@ -155,12 +155,12 @@ def quick_view(request):
 
 def historybyblog_view(request,id=None):
     blog = Blog.objects.filter(id=id)
-    print(id)
     user = User.objects.filter(username=request.session['username'])
     comments = Comment.objects.filter(blog=blog[0],user=user[0])
     params = {'blog':blog[0],'comments':comments}
     return render(request,'historybyblog.html',params)
 
 def historybyauth_view(request,data=None):
-    print(data)
-    return HttpResponse('Success')
+    blog = Blog.objects.filter(author__username=data)
+    print(blog[0].created_at)
+    return render(request,'historybyauthor.html',{'blog':blog})

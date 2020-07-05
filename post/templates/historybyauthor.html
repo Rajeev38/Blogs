@@ -1,7 +1,28 @@
 {% extends 'myblogs.html' %}
 
+{% load blog_tags %}
+
 {% block main%}
 
+<main class="div3">
+        <section id="columns">
+            {% if not blog %}
+                <center>Nothing To Show</center>
+            {% endif %}
+            {% for i in blog %}
+            <center><h1>Your Comment history For Blog</h1></center>
+            <h3>Name: {{i.name}}</h3>
+            <p>Content: {{i.content}}</p>
+            <p>Author: {{i.author}}</p>
+            <p>Created: {{i.created_at}}</p>
 
-
+            <center><h1>Comments</h1></center>
+            {% get_comments i.id request.session.username as comments %}
+            {% for i in comments %}
+            <h3>Text: {{i.comment_text}}</h3>
+            <p>created_date: {{i.created_date}}</p>
+            {% endfor %}
+            {% endfor %}
+        </section>
+</main>
 {% endblock %}

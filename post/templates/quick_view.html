@@ -40,10 +40,10 @@
         {% endfor %}
 
         <center><h1>Your Unmodified Blogs</h1></center>
-        {% if not modified %}
+        {% if not unmodified %}
            <p>Nothing To Show</p>
         {% endif %}
-        {% for i in modified %}
+        {% for i in unmodified %}
         <h3>Name: {{i.name}}</h3>
         <p>Content: {{i.content}}</p>
         <p>Author: {{i.author}}</p>

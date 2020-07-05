@@ -4,10 +4,13 @@
 
 {% block main %}
 <div class="div3">
+    <div class="div1"><h3>Enter Your Credentials</h3></div>
     <form action="{% url 'home' %}" method="post">
         {% csrf_token %}
-       {{form}}
-        <input type="submit" name="submit">
+        <table>
+           {{form.as_table}}
+        </table>
+        <input type="submit" name="submit" value="Log In">
     </form>
 </div>
 

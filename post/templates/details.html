@@ -15,7 +15,7 @@
                     <h4><a href="{% url 'dislike' blog.id %}" name="dislike">Dislike:</a> {{response2}}</h4>
                 <center><h1>Comments</h1></center>
                 {% for i in comments %}
-                   <div class="div4">
+                   <div>
                        <h3>Name: {{i.user.username}}</h3>
                        <p>Text: {{i.comment_text}}</p>
                    </div>

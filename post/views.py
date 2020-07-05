@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from .myforms import SignupForm
 from .models import *
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
@@ -128,7 +127,7 @@ def modified(request):
         name = request.POST['name']
         content = request.POST['content']
         blog = Blog.objects.update_or_create(id=id, author__username=request.session['username'],
-                                             defaults={'name': name, 'content': content})
+                                             defaults={'name': name, 'content': content,'is_modified':True})
         return redirect('myblogs')
 
 
@@ -143,12 +142,12 @@ def quick_view(request):
     disliked = Blog.objects.filter(response__user__username=request.session['username'],
                                    created_at__gt=date2, response__like_or_not=False).order_by('-created_at')[:5]
     unmodified = Blog.objects.filter(author__username=request.session['username'],
-                                     created_at__date=F('modified_at__date'))
+                                     is_modified=False)
 
     commented = Blog.objects.filter(comment__user__username=request.session['username'])
 
     params = {'comments': comments, 'liked': liked, 'disliked': disliked,
-              'unmodofied': unmodified, 'commented': commented}
+              'unmodified': unmodified, 'commented': commented}
 
     return render(request, 'quick_view.html', params)
 

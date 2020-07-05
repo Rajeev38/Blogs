@@ -7,6 +7,17 @@ nav {
    display : flex;
    flex-direction: row;
    flex-wrap : wrap;
+   margin: 0;
+   padding: 0;
+}
+
+nav > div > a {
+  padding : 6px;
+  color : white;
+}
+
+nav> div > a:hover {
+   background-color: grey;
 }
 
 .div1 {

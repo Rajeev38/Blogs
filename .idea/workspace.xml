@@ -3,11 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="70ef9085-3b80-429e-aeca-8f41b5ce08b9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/templates/blogs.html" beforeDir="false" afterPath="$PROJECT_DIR$/post/templates/blogs.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/templates/historybyauthor.html" beforeDir="false" afterPath="$PROJECT_DIR$/post/templates/historybyauthor.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/templates/historybyblog.html" beforeDir="false" afterPath="$PROJECT_DIR$/post/templates/historybyblog.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/templates/myblogs.html" beforeDir="false" afterPath="$PROJECT_DIR$/post/templates/myblogs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/post/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/myforms.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/static/post/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/post/static/post/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/templates/details.html" beforeDir="false" afterPath="$PROJECT_DIR$/post/templates/details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/post/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/templates/quick_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/post/templates/quick_view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/post/templates/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/post/templates/signup.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/post/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/post/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,7 +41,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../bankInfo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">

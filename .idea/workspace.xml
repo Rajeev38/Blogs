@@ -3,15 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="70ef9085-3b80-429e-aeca-8f41b5ce08b9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/post/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/myforms.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/static/post/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/post/static/post/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/templates/details.html" beforeDir="false" afterPath="$PROJECT_DIR$/post/templates/details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/post/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/templates/quick_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/post/templates/quick_view.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/post/templates/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/post/templates/signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/post/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/post/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,10 +70,10 @@
       <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="466" y="155" width="424" height="491" key="FileChooserDialogImpl/0.27.1366.741@0.27.1366.741" timestamp="1593760179822" />
-    <state x="339" y="225" key="com.intellij.ide.util.TipDialog" timestamp="1593927928123">
+    <state x="339" y="225" key="com.intellij.ide.util.TipDialog" timestamp="1594003976887">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state x="339" y="225" key="com.intellij.ide.util.TipDialog/0.27.1366.741@0.27.1366.741" timestamp="1593927928123" />
+    <state x="339" y="225" key="com.intellij.ide.util.TipDialog/0.27.1366.741@0.27.1366.741" timestamp="1594003976887" />
     <state x="326" y="27" width="1008" height="697" key="dock-window-1" timestamp="1593529821189">
       <screen x="0" y="27" width="1366" height="741" />
     </state>

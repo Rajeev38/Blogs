@@ -151,7 +151,7 @@ def quick_view(request):
 
     return render(request, 'quick_view.html', params)
 
-
+@login_required(login_url='')
 def historybyblog_view(request,id=None):
     blog = Blog.objects.filter(id=id)
     user = User.objects.filter(username=request.session['username'])
@@ -159,7 +159,7 @@ def historybyblog_view(request,id=None):
     params = {'blog':blog[0],'comments':comments}
     return render(request,'historybyblog.html',params)
 
+@login_required(login_url='')
 def historybyauth_view(request,data=None):
-    blog = Blog.objects.filter(author__username=data)
-    print(blog[0].created_at)
+    blog = Blog.objects.filter(author__username=data,comment__user__username=request.session['username'])
     return render(request,'historybyauthor.html',{'blog':blog})

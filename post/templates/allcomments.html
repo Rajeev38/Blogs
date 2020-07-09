@@ -1,6 +1,5 @@
 {% extends 'myblogs.html' %}
 
-{% block title %} Modify {% endblock %}
 
 {% block main %}
 
@@ -13,17 +12,20 @@
         <a href="{% url 'unmodified'%}" class="div1">Unmodified Blogs</a>
         <a href="{% url 'allcomments'%}" class="div1">Blogs You Have Commented</a>
     </section>
+    <section class="div4">
+        <h1>Blogs you have Commented</h1>
+        {% if not commented %}
+           <p>Nothing To Show</p>
+        {% endif %}
 
-    <section class="div6">
-        <form action="{% url 'modified' %}" method="post" id="createblog">
-            {% csrf_token %}
-            <input type="hidden" value="{{id}}" name="id">
-            <label for="name">Name</label>
-            <input type="text" name="name" required>
-            <label for="content">Content</label>
-            <textarea name="content" required></textarea>
-            <input type="submit" value="Done">
-        </form>
+        {% for i in commented %}
+           <section class="div5">
+              <h3>Name: {{i.name}}</h3>
+              <p>Content: {{i.content}}</p>
+              <p>Author: {{i.author}}</p>
+              <p>Created: {{i.created_at}}</p>
+           </section>
+        {% endfor %}
     </section>
 </main>
 

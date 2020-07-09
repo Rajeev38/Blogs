@@ -1,5 +1,12 @@
-body{
-   background-color : rgb(100,150,250);
+* {
+   box-sizing : border-box;
+   margin: 4px;
+}
+
+body {
+   background-color: #E8E8E8;
+   padding: 0;
+   margin: 0;
 }
 
 nav {
@@ -7,8 +14,24 @@ nav {
    display : flex;
    flex-direction: row;
    flex-wrap : wrap;
+   position: sticky;
+   top : 0;
    margin: 0;
-   padding: 0;
+}
+
+a {
+   text-decoration: none;
+}
+
+section > a {
+     display: block;
+     padding: 5px 0;
+     margin: 0px;
+ }
+
+
+section > a:hover{
+  background-color : lightgreen;
 }
 
 nav > div > a {
@@ -17,21 +40,55 @@ nav > div > a {
 }
 
 nav> div > a:hover {
-   background-color: grey;
+   background-color: #787878;
 }
+
 
 .div1 {
    margin: 5px;
 }
 
+.div2 {
+   width: 20%;
+   background-color: #C0C0C0;
+   height: 100vh;
+}
+
 .div3 {
  display: flex;
  flex-wrap: wrap;
- flex-direction: column;
- justify-content : center;
- align-items: center;
+ flex-direction: row;
  margin: 5px;
 }
+
+.div4 {
+  display: flex;
+  align-items: center;
+  flex-direction : column;
+  margin-bottom: 20px;
+  padding : 2px;
+  width: 50%;
+}
+
+.div5 {
+    display: block;
+    background-color : 	#C0C0C0;
+    padding : 10px;
+    margin: 5px;
+    border-radius: 10px;
+    width : 50% ;
+    word-wrap: break-word;
+    border: 2px solid black;
+}
+
+.div6 {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+  margin: 5px;
+}
+
 
 #createblog {
   display: flex;
@@ -56,28 +113,7 @@ textarea {
    height: 100px;
    width: 250px;
 }
-#allposts {
-  display: flex;
-  justify-content: center;
-  flex-direction : row;
-}
-
-
-.div4 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction : column;
-  margin-bottom: 20px;
-  padding : 2px;
-}
-
-#commentsec {
-  display : none;
-  border: 0;
-
-}
 
 center {
-   color: Yellow;
+   margin: 10px;
 }

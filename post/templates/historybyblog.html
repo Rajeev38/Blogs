@@ -5,24 +5,37 @@
 {% block main%}
 
 <main class="div3">
-        <section id="columns">
-            <center><h1>Your Comment history For Blog</h1></center>
-            {% if not blog %}
-                <center>Nothing To Show</center>
-            {% endif %}
+    <section class="div2">
+        <h3>Quick Links</h3>
+        <a href="{% url 'quick_view'%}" class="div1">Top 5 Commented Blogs</a>
+        <a href="{% url 'liked'%}" class="div1">Top 5 Liked in Last 3 Days</a>
+        <a href="{% url 'disliked'%}" class="div1">Top 5 Disliked in Last 3 Days</a>
+        <a href="{% url 'unmodified'%}" class="div1">Unmodified Blogs</a>
+        <a href="{% url 'allcomments'%}" class="div1">Blogs You Have Commented</a>
+    </section>
+    <section >
+        <h1>Your Comment history For Blog:</h1>
+        {% if not blog %}
+        <p>Nothing To Show</p>
+        {% endif %}
+        <section class="div5">
             <h3>Name: {{blog.name}}</h3>
             <p>Content: {{blog.content}}</p>
             <p>Author: {{blog.author}}</p>
             <p>Created: {{blog.created_at}}</p>
-
-            <center><h1>Comments</h1></center>
-            {% if not comments %}
-                <center>Nothing To Show</center>
-            {% endif %}
-            {% for i in comments %}
-            <h3>Text: {{i.comment_text}}</h3>
-            <p>created_date: {{i.created_date}}</p>
-            {% endfor %}
         </section>
+
+        <h1>Comments</h1>
+        {% if not comments %}
+                <p>Nothing To Show</p>
+        {% endif %}
+        {% for i in comments %}
+            <section class="div5">
+               <h3>Text: {{i.comment_text}}</h3>
+               <p>created_date: {{i.created_date}}</p>
+            </section>
+            {% endfor %}
+
+    </section>
 </main>
 {% endblock %}

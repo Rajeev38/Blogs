@@ -48,7 +48,7 @@ def createblog(request):
 
 @login_required(login_url='')
 def showblogs(request):
-    blog = Blog.objects.all()
+    blog = Blog.objects.all().order_by('-modified_at')
     return render(request, 'blogs.html', {'allblogs': blog})
 
 
@@ -59,14 +59,14 @@ def logout_view(request):
 
 @login_required(login_url='')
 def myblogs(request):
-    allblogs = Blog.objects.filter(author__username=request.session['username'])
+    allblogs = Blog.objects.filter(author__username=request.session['username']).order_by('-modified_at')
     return render(request, 'myblogs.html', {'allblogs': allblogs})
 
 
 @login_required(login_url='')
 def detail_view(request, id=None):
     blog = Blog.objects.filter(id=id)
-    comments = Comment.objects.filter(blog=blog[0])
+    comments = Comment.objects.filter(blog=blog[0]).order_by('-created_date')
     count = Comment.objects.filter(blog=blog[0]).count()
     response1 = Response.objects.filter(blog=blog[0], like_or_not=True).count()
     response2 = Response.objects.filter(blog=blog[0], like_or_not=False).count()
@@ -127,7 +127,7 @@ def modified(request):
         name = request.POST['name']
         content = request.POST['content']
         blog = Blog.objects.update_or_create(id=id, author__username=request.session['username'],
-                                             defaults={'name': name, 'content': content,'is_modified':True})
+                                             defaults={'name': name, 'content': content, 'is_modified': True})
         return redirect('myblogs')
 
 
@@ -137,29 +137,53 @@ def quick_view(request):
     date2 = date1 - datetime.timedelta(days=3)
     comments = Blog.objects.filter(comment__user__username=request.session['username']
                                    ).order_by('-created_at')[:5]
-    liked = Blog.objects.filter(response__user__username=request.session['username'],
-                                created_at__gt=date2, response__like_or_not=True).order_by('-created_at')[:5]
-    disliked = Blog.objects.filter(response__user__username=request.session['username'],
-                                   created_at__gt=date2, response__like_or_not=False).order_by('-created_at')[:5]
-    unmodified = Blog.objects.filter(author__username=request.session['username'],
-                                     is_modified=False)
 
-    commented = Blog.objects.filter(comment__user__username=request.session['username'])
-
-    params = {'comments': comments, 'liked': liked, 'disliked': disliked,
-              'unmodified': unmodified, 'commented': commented}
+    params = {'comments': comments}
 
     return render(request, 'quick_view.html', params)
 
-@login_required(login_url='')
-def historybyblog_view(request,id=None):
-    blog = Blog.objects.filter(id=id)
-    user = User.objects.filter(username=request.session['username'])
-    comments = Comment.objects.filter(blog=blog[0],user=user[0])
-    params = {'blog':blog[0],'comments':comments}
-    return render(request,'historybyblog.html',params)
 
 @login_required(login_url='')
-def historybyauth_view(request,data=None):
-    blog = Blog.objects.filter(author__username=data,comment__user__username=request.session['username'])
-    return render(request,'historybyauthor.html',{'blog':blog})
+def historybyblog_view(request, id=None):
+    blog = Blog.objects.filter(id=id)
+    user = User.objects.filter(username=request.session['username'])
+    comments = Comment.objects.filter(blog=blog[0], user=user[0])
+    params = {'blog': blog[0], 'comments': comments}
+    return render(request, 'historybyblog.html', params)
+
+
+@login_required(login_url='')
+def historybyauth_view(request, data=None):
+    blog = Blog.objects.filter(author__username=data, comment__user__username=request.session['username'])
+    return render(request, 'historybyauthor.html', {'blog': blog})
+
+
+def liked(request):
+    date1 = datetime.datetime.today()
+    date2 = date1 - datetime.timedelta(days=3)
+    liked = Blog.objects.filter(response__user__username=request.session['username'],
+                                created_at__gt=date2, response__like_or_not=True).order_by('-created_at')[:5]
+    params = {'liked': liked}
+    return render(request, 'liked.html', params)
+
+
+def disliked(request):
+    date1 = datetime.datetime.today()
+    date2 = date1 - datetime.timedelta(days=3)
+    disliked = Blog.objects.filter(response__user__username=request.session['username'],
+                                   created_at__gt=date2, response__like_or_not=False).order_by('-created_at')[:5]
+    params = {'disliked': disliked}
+    return render(request, 'disliked.html', params)
+
+
+def unmodified(request):
+    unmodified = Blog.objects.filter(author__username=request.session['username'],
+                                     is_modified=False)
+    params = {'unmodified': unmodified}
+    return render(request, 'unmodified.html', params)
+
+
+def allcomments(request):
+    commented = Blog.objects.filter(comment__user__username=request.session['username'])
+    params = {'commented': commented}
+    return render(request, 'allcomments.html', params)

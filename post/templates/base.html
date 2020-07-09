@@ -3,16 +3,17 @@
 <head>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{%static 'post/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{%static 'post/index.css' %}" media="(max-width:900px)">
     <meta charset="UTF-8">
     <title>{% block title %} Base {% endblock %}</title>
 </head>
 <body>
-<nav>
-    <div class="div1"><a href="{% url 'home' %}">Home</a></div>
-    {% block register %} {% endblock %}
+   <nav>
+       <div class="div1"><a href="{% url 'home' %}">Home</a></div>
+       {% block register %} {% endblock %}
+   </nav>
 
-
-</nav>
 {% block main %}  {% endblock %}
+
 </body>
 </html>

@@ -3,7 +3,8 @@
 <head>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{%static 'post/main.css' %}">
-    <link rel="stylesheet" type="text/css" href="{%static 'post/index.css' %}" media="(max-width:900px)">
+    <link rel="stylesheet" type="text/css" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
+
     <meta charset="UTF-8">
     <title>{% block title %} Base {% endblock %}</title>
 </head>
@@ -13,7 +14,7 @@
        {% block register %} {% endblock %}
    </nav>
 
-{% block main %}  {% endblock %}
+   {% block main %}  {% endblock %}
 
 </body>
 </html>

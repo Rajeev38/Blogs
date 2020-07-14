@@ -1,8 +1,8 @@
 * {
    box-sizing : border-box;
-   margin: 4px;
+   margin: 0;
+   padding: 4px;
 }
-
 body {
    background-color: #E8E8E8;
    padding: 0;
@@ -15,8 +15,9 @@ nav {
    flex-direction: row;
    flex-wrap : wrap;
    position: sticky;
+   margin : 0;
+   padding :0;
    top : 0;
-   margin: 0;
 }
 
 a {
@@ -30,12 +31,12 @@ section > a {
  }
 
 
-section > a:hover{
+section > div > a.div1:hover{
   background-color : lightgreen;
 }
 
 nav > div > a {
-  padding : 6px;
+  padding : 10px;
   color : white;
 }
 
@@ -58,7 +59,7 @@ nav> div > a:hover {
  display: flex;
  flex-wrap: wrap;
  flex-direction: row;
- margin: 5px;
+
 }
 
 .div4 {
@@ -116,4 +117,11 @@ textarea {
 
 center {
    margin: 10px;
+}
+
+.div7 {
+  border : 1px solid black;
+  border-radius: 4px;
+  margin-bottom : 5px;
+  width : 240px;
 }

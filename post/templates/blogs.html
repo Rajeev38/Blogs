@@ -3,50 +3,49 @@
 {% block title %} Blogs {% endblock%}
 
 {% block main %}
-    <main class="div3">
-        <section class="div2">
-           <h3>Quick Links</h3>
-           <a href="{% url 'quick_view'%}" class="div1">Top 5 Commented Blogs</a>
-           <a href="{% url 'liked'%}" class="div1">Top 5 Liked in Last 3 Days</a>
-           <a href="{% url 'disliked'%}" class="div1">Top 5 Disliked in Last 3 Days</a>
-           <a href="{% url 'unmodified'%}" class="div1">Unmodified Blogs</a>
-           <a href="{% url 'allcomments'%}" class="div1">Blogs You Have Commented</a>
-        </section>
+<main class="div3">
+    <section class="div2">
+        <h3>Quick Links</h3>
+        <div><i class="fa fa-comment"></i><a href="{% url 'quick_view'%}" class="div1">Top 5 Commented Blogs</a></div>
+        <div><i class="fa fa-thumbs-o-up"></i><a href="{% url 'liked'%}" class="div1">Top 5 Liked in Last 3 Days</a></div>
+        <div><i class="fa fa-thumbs-o-down"></i><a href="{% url 'disliked'%}" class="div1">Top 5 Disliked in Last 3 Days</a></div>
+        <div><i class="fa fa-calendar-times-o"></i><a href="{% url 'unmodified'%}" class="div1">Your Unmodified Blogs</a></div>
+        <div><i class="fa fa-comments"></i><a href="{% url 'allcomments'%}" class="div1">Blogs You Have Commented</a></div>
+    </section>
 
-        <section class="div4">
-            <div class="div3">
-                <form action="{% url 'createblog'%}" method="post" id="createblog">
-                   {% csrf_token %}
-                   <label for="name">Name</label>
-                   <input type="text" name="name" required>
-                   <label for="content">Content</label>
-                   <textarea name="content" required></textarea>
-                   <input type="submit" value="Post">
-               </form>
-            </div>
-            <h1>Your Feed</h1>
-            {% if not allblogs %}
-                <p>Nothing To Show Consider Posting one</p>
-            {% endif %}
+    <section class="div4">
+        <div class="div3">
+            <form action="{% url 'createblog'%}" method="post" id="createblog">
+                {% csrf_token %}
+                <label for="name">Name</label>
+                <input type="text" class="div7" name="name" required>
+                <label for="content">Content</label>
+                <textarea class="div7" name="content" required></textarea>
+                <input type="submit" class="div7" value="Post">
+            </form>
+        </div>
+        <h1>Your Feed</h1>
+        {% if not allblogs %}
+        <p>Nothing To Show Consider Posting one</p>
+        {% endif %}
 
-            {% for i in allblogs %}
-            <div class="div5">
-               <h1>Name: {{i.name}}</h1>
-               <p>Content:{{i.content}}</p>
-               <p>Author: {{i.author}}</p>
-               <p>Created: {{i.created_at}}</p>
-               <a href="{% url 'addcomment' i.id %}">View</a>
-               <p>My Comment History:
-                   <a href="{% url 'historybyblog_view' i.id %}">For Blog</a>
-                   <a href="{% url 'historybyauth_view' i.author %}">For Author</a>
-               </p>
-            </div>
-            {% endfor %}
-        </section>
-    </main>
+        {% for i in allblogs %}
+        <div class="div5">
+            <h1>Name: {{i.name}}</h1>
+            <p>Content:{{i.content}}</p>
+            <p>Author: {{i.author}}</p>
+            <p>Created: {{i.created_at}}</p>
+            <a href="{% url 'addcomment' i.id %}">View</a>
+            <p>My Comment History:
+                <a href="{% url 'historybyblog_view' i.id %}">For Blog</a>
+                <a href="{% url 'historybyauth_view' i.author %}">For Author</a>
+            </p>
+        </div>
+        {% endfor %}
+    </section>
+</main>
 {% endblock %}
-
 {% block register%}
-<div class="div1"><a href="{% url 'myblogs' %}">MyPosts</a></div>
-<div class="div1"><a href="{% url 'logout'%}">Logout</a></div>
-{%  endblock %}
+    <div class="div1"><a href="{% url 'myblogs' %}">MyPosts</a></div>
+    <div class="div1"><a href="{% url 'logout'%}">Logout</a></div>
+{% endblock %}

@@ -1,32 +1,34 @@
-{% extends 'myblogs.html' %}
+{% extends 'blogs.html' %}
 
+{% block title %} Disliked Blogs {% endblock %}
 
 {% block main %}
-
 <main class="div3">
     <section class="div2">
         <h3>Quick Links</h3>
-        <a href="{% url 'quick_view'%}" class="div1">Top 5 Commented Blogs</a>
-        <a href="{% url 'liked'%}" class="div1">Top 5 Liked in Last 3 Days</a>
-        <a href="{% url 'disliked'%}" class="div1">Top 5 Disliked in Last 3 Days</a>
-        <a href="{% url 'unmodified'%}" class="div1">Unmodified Blogs</a>
-        <a href="{% url 'allcomments'%}" class="div1">Blogs You Have Commented</a>
+        <div><i class="fa fa-comment"></i><a href="{% url 'quick_view'%}" class="div1">Top 5 Commented Blogs</a></div>
+        <div><i class="fa fa-thumbs-o-up"></i><a href="{% url 'liked'%}" class="div1">Top 5 Liked in Last 3 Days</a></div>
+        <div><i class="fa fa-thumbs-o-down"></i><a href="{% url 'disliked'%}" class="div1">Top 5 Disliked in Last 3 Days</a></div>
+        <div><i class="fa fa-calendar-times-o"></i><a href="{% url 'unmodified'%}" class="div1">Your Unmodified Blogs</a></div>
+        <div><i class="fa fa-comments"></i><a href="{% url 'allcomments'%}" class="div1">Blogs You Have Commented</a></div>
     </section>
-
     <section class="div4">
         <h1>Your Top 5 Disliked Blogs in Last 3 days</h1>
-        {% if not liked %}
-           <p>Nothing To Show</p>
+        {% if not disliked %}
+        <p>Nothing To Show</p>
         {% endif %}
         {% for i in disliked %}
         <section class="div5">
-           <h3>Name: {{i.name}}</h3>
-           <p>Content: {{i.content}}</p>
-           <p>Author: {{i.author}}</p>
-           <p>Created: {{i.created_at}}</p>
+            <h3>Name: {{i.name}}</h3>
+            <p>Content: {{i.content}}</p>
+            <p>Author: {{i.author}}</p>
+            <p>Created: {{i.created_at}}</p>
+            <a href="{% url 'addcomment' i.id %}">View</a>
+            <p>My Comment History:
+                <a href="{% url 'historybyblog_view' i.id %}">Show</a>
+            </p>
         </section>
         {% endfor %}
     </section>
 </main>
-
 {% endblock %}

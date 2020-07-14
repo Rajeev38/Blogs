@@ -1,55 +1,53 @@
-{% extends 'base.html' %}
+{% extends 'blogs.html' %}
 
 {% block title %} Details {% endblock%}
 
 {% block main %}
-    <main class="div3">
-        <section class="div2">
-          <h3>Quick Links</h3>
-          <a href="{% url 'quick_view'%}" class="div1">Top 5 Commented Blogs</a>
-          <a href="{% url 'liked'%}" class="div1">Top 5 Liked in Last 3 Days</a>
-          <a href="{% url 'disliked'%}" class="div1">Top 5 Disliked in Last 3 Days</a>
-          <a href="{% url 'unmodified'%}" class="div1">Unmodified Blogs</a>
-          <a href="{% url 'allcomments'%}" class="div1">Blogs You Have Commented</a>
-        </section>
+<main class="div3">
+    <section class="div2">
+        <h3>Quick Links</h3>
+        <div><i class="fa fa-comment"></i><a href="{% url 'quick_view'%}" class="div1">Top 5 Commented Blogs</a></div>
+        <div><i class="fa fa-thumbs-o-up"></i><a href="{% url 'liked'%}" class="div1">Top 5 Liked in Last 3 Days</a></div>
+        <div><i class="fa fa-thumbs-o-down"></i><a href="{% url 'disliked'%}" class="div1">Top 5 Disliked in Last 3 Days</a></div>
+        <div><i class="fa fa-calendar-times-o"></i><a href="{% url 'unmodified'%}" class="div1">Your Unmodified Blogs</a></div>
+        <div><i class="fa fa-comments"></i><a href="{% url 'allcomments'%}" class="div1">Blogs You Have Commented</a></div>
+    </section>
 
-        <section class="div4">
-            <div class="div5">
-                    <h1>Name: {{blog.name}}</h1>
-                    <p>Content: {{blog.content}}</p>
-                    <p>Author: {{blog.author}}</p>
-                    <p>Created: {{blog.created_at}}</p>
-                    <p>Your response:{{flag}}</p>
-                    <h4>
-                        Comment: {{count}}
-                        <a href="{% url 'like' blog.id %}" name="like">Like:</a> {{response1}}
-                        <a href="{% url 'dislike' blog.id %}" name="dislike">Dislike:</a> {{response2}}
-                    </h4>
+    <section class="div4">
+        <div class="div5">
+            <h1>Name: {{blog.name}}</h1>
+            <p>Content: {{blog.content}}</p>
+            <p>Author: {{blog.author}}</p>
+            <p>Created: {{blog.created_at}}</p>
+            <p>Your response:{{flag}}</p>
+            <h4>
+                Comment: {{count}}
+                <a href="{% url 'like' blog.id %}" name="like">Like:</a> {{response1}}
+                <a href="{% url 'dislike' blog.id %}" name="dislike">Dislike:</a> {{response2}}
+            </h4>
+        </div>
+
+        <center><h1>Comments</h1></center>
+        {% for i in comments %}
+        <div class="div5">
+            <div>
+                <h3>Username: {{i.user.username}}</h3>
+                <p>Text: {{i.comment_text}}</p>
+                <p>Created_at: {{i.created_date}}</p>
             </div>
+        </div>
+        {% endfor %}
 
-            <center><h1>Comments</h1></center>
-            {% for i in comments %}
-             <div class="div5">
-                 <div>
-                     <h3>Username: {{i.user.username}}</h3>
-                     <p>Text: {{i.comment_text}}</p>
-                     <p>Created_at: {{i.created_date}}</p>
-                 </div>
-             </div>
-                {% endfor %}
-                <div class="div4">
-                   <form action="{% url 'addcomment' blog.id %}" method="post" id="createcomment">
-                      {% csrf_token %}
-                      <label for="content">Add Comment below :</label>
-                      <textarea name="content" required></textarea>
-                      <input type="submit" value="Add">
-                   </form>
-                </div>
-        </section>
-    </main>
+        <div class="div4">
+            <form action="{% url 'addcomment' blog.id %}" method="post" id="createcomment">
+                {% csrf_token %}
+                <label for="content">Add Comment below :</label>
+                <textarea class="div7" name="content" required></textarea>
+                <input type="submit" class="div7" value="Add">
+            </form>
+        </div>
+    </section>
+</main>
 {% endblock %}
 
-{% block register%}
-   <div class="div1"><a href="{% url 'myblogs' %}">MyPosts</a></div>
-   <div><a href="{% url 'logout'%}">Logout</a></div>
-{%  endblock %}
+

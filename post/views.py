@@ -100,17 +100,19 @@ def addcomment(request, id=None):
 
 @login_required(login_url='')
 def like_view(request, id=None):
+    date1 = datetime.datetime.today()
     blog = Blog.objects.filter(id=id)
     user = User.objects.filter(username=request.session['username'])
-    response = Response.objects.update_or_create(blog=blog[0], user=user[0], defaults={'like_or_not': True})
+    response = Response.objects.update_or_create(blog=blog[0], user=user[0], defaults={'like_or_not': True,'response_date':date1})
     return redirect('details', id)
 
 
 @login_required(login_url='')
 def dislike_view(request, id=None):
+    date1 = datetime.datetime.today()
     blog = Blog.objects.filter(id=id)
     user = User.objects.filter(username=request.session['username'])
-    response = Response.objects.update_or_create(blog=blog[0], user=user[0], defaults={'like_or_not': False})
+    response = Response.objects.update_or_create(blog=blog[0], user=user[0], defaults={'like_or_not': False,'response_date':date1})
     return redirect('details', id)
 
 
@@ -136,7 +138,7 @@ def quick_view(request):
     date1 = datetime.datetime.today()
     date2 = date1 - datetime.timedelta(days=3)
     comments = Blog.objects.filter(comment__user__username=request.session['username']
-                                   ).order_by('-created_at')[:5]
+                                   ).order_by('-created_at').distinct()[:5]
 
     params = {'comments': comments}
 
@@ -161,8 +163,11 @@ def historybyauth_view(request, data=None):
 def liked(request):
     date1 = datetime.datetime.today()
     date2 = date1 - datetime.timedelta(days=3)
+    print(date1)
+    print(date2)
     liked = Blog.objects.filter(response__user__username=request.session['username'],
-                                created_at__gt=date2, response__like_or_not=True).order_by('-created_at')[:5]
+                                response__response_date__gt=date2, response__like_or_not=True).order_by('-created_at')[:5]
+    #print(liked[0])
     params = {'liked': liked}
     return render(request, 'liked.html', params)
 
@@ -171,7 +176,7 @@ def disliked(request):
     date1 = datetime.datetime.today()
     date2 = date1 - datetime.timedelta(days=3)
     disliked = Blog.objects.filter(response__user__username=request.session['username'],
-                                   created_at__gt=date2, response__like_or_not=False).order_by('-created_at')[:5]
+                                   response__response_date__gt=date2, response__like_or_not=False).order_by('-created_at')[:5]
     params = {'disliked': disliked}
     return render(request, 'disliked.html', params)
 
@@ -184,6 +189,6 @@ def unmodified(request):
 
 
 def allcomments(request):
-    commented = Blog.objects.filter(comment__user__username=request.session['username'])
+    commented = Blog.objects.filter(comment__user__username=request.session['username']).distinct()
     params = {'commented': commented}
     return render(request, 'allcomments.html', params)
